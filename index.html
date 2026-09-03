@@ -23,14 +23,15 @@
 
         body {
             min-height: 100vh;
-            background: #101318;
-            color: #f5f5f5;
+            background: #1B2021;
+            color: #F5F5F5;
             font-family: "Inter", sans-serif;
             overflow: hidden;
         }
 
+
         /* =========================
-           MENSAJE DE ENTRADA
+           PANTALLAS DE ADVERTENCIA
         ========================= */
 
         .warning-screen {
@@ -42,13 +43,16 @@
             justify-content: center;
             align-items: center;
 
-            background: #101318;
+            background: #1B2021;
 
             padding: 30px;
 
+            opacity: 1;
+            visibility: visible;
+
             transition:
-                opacity 0.8s ease,
-                visibility 0.8s ease;
+                opacity 0.7s ease,
+                visibility 0.7s ease;
         }
 
         .warning-screen.hidden {
@@ -57,56 +61,99 @@
             pointer-events: none;
         }
 
+        /* Tarjeta */
+
         .warning-box {
             width: min(90%, 520px);
+
+            background: #FFD9DA;
+
+            color: #1B2021;
+
+            border-radius: 18px;
+
+            padding: 50px 45px;
+
             text-align: center;
+
+            box-shadow:
+                0 20px 60px rgba(0, 0, 0, 0.25);
+
+            transform: translateY(0);
+
+            transition:
+                opacity 0.5s ease,
+                transform 0.5s ease;
+        }
+
+        .warning-box.changing {
+            opacity: 0;
+            transform: translateY(10px);
         }
 
         .warning-icon {
-            font-size: 30px;
-            margin-bottom: 25px;
+            font-size: 28px;
+            margin-bottom: 22px;
         }
 
         .warning-title {
             font-family: "DM Serif Display", serif;
+
             font-size: 2.3rem;
+
             font-weight: 400;
-            margin-bottom: 18px;
+
+            line-height: 1.15;
+
+            margin-bottom: 20px;
         }
 
         .warning-text {
-            color: #aeb3bd;
             font-size: 1rem;
+
             line-height: 1.7;
-            font-weight: 300;
+
+            font-weight: 400;
+
+            color: #1B2021;
         }
 
         .warning-button {
-            margin-top: 35px;
+            margin-top: 32px;
 
             padding: 13px 27px;
 
-            border: 1px solid #454b55;
+            border: 1px solid #1B2021;
+
             border-radius: 30px;
 
-            background: transparent;
-            color: #f5f5f5;
+            background: #1B2021;
+
+            color: #FFD9DA;
 
             font-family: "Inter", sans-serif;
+
             font-size: 0.95rem;
 
             cursor: pointer;
 
             transition:
-                background 0.3s ease,
-                border-color 0.3s ease,
-                transform 0.3s ease;
+                transform 0.25s ease,
+                opacity 0.25s ease;
         }
 
         .warning-button:hover {
-            background: #1b1f26;
-            border-color: #6b727d;
             transform: translateY(-2px);
+            opacity: 0.9;
+        }
+
+
+        /* =========================
+           SEGUNDA ADVERTENCIA
+        ========================= */
+
+        #warningTwo {
+            display: none;
         }
 
 
@@ -118,12 +165,15 @@
             min-height: 100vh;
 
             display: flex;
+
             align-items: center;
+
             justify-content: flex-end;
 
             padding: 80px 10vw;
 
             opacity: 0;
+
             transform: translateY(15px);
 
             transition:
@@ -133,11 +183,13 @@
 
         .page.visible {
             opacity: 1;
+
             transform: translateY(0);
         }
 
         .intro-container {
             width: min(720px, 100%);
+
             text-align: right;
         }
 
@@ -152,7 +204,7 @@
 
             letter-spacing: -1.5px;
 
-            color: #f5f5f5;
+            color: #F5F5F5;
         }
 
         .subtitle {
@@ -168,7 +220,7 @@
 
             font-weight: 300;
 
-            color: #aeb3bd;
+            color: #AEB3BD;
         }
 
 
@@ -177,6 +229,20 @@
         ========================= */
 
         @media (max-width: 600px) {
+
+            .warning-box {
+                padding: 40px 28px;
+
+                border-radius: 16px;
+            }
+
+            .warning-title {
+                font-size: 2rem;
+            }
+
+            .warning-text {
+                font-size: 0.95rem;
+            }
 
             .page {
                 padding: 50px 30px;
@@ -192,11 +258,8 @@
 
             .subtitle {
                 font-size: 1rem;
-                line-height: 1.65;
-            }
 
-            .warning-title {
-                font-size: 2rem;
+                line-height: 1.65;
             }
         }
 
@@ -207,12 +270,12 @@
 
 
     <!-- =========================
-         PANTALLA DE ADVERTENCIA
+         PRIMERA ADVERTENCIA
     ========================= -->
 
     <div class="warning-screen" id="warningScreen">
 
-        <div class="warning-box">
+        <div class="warning-box" id="warningBox">
 
             <div class="warning-icon">
                 ⚠️
@@ -230,8 +293,35 @@
                 Si decides continuar, hazlo bajo tu propia responsabilidad.
             </p>
 
-            <button class="warning-button" id="enterButton">
+            <button class="warning-button" id="firstButton">
                 Estoy preparada
+            </button>
+
+        </div>
+
+
+        <!-- =========================
+             SEGUNDA ADVERTENCIA
+        ========================= -->
+
+        <div class="warning-box" id="warningTwo">
+
+            <div class="warning-icon">
+                ♡
+            </div>
+
+            <h2 class="warning-title">
+                Última advertencia
+            </h2>
+
+            <p class="warning-text">
+                Te lo advertí.
+                <br>
+                Hay demasiada ternura aquí dentro.
+            </p>
+
+            <button class="warning-button" id="secondButton">
+                Estoy segurísima
             </button>
 
         </div>
@@ -269,15 +359,51 @@
     <script>
 
         const warningScreen = document.getElementById("warningScreen");
-        const enterButton = document.getElementById("enterButton");
+
+        const warningBox = document.getElementById("warningBox");
+
+        const warningTwo = document.getElementById("warningTwo");
+
+        const firstButton = document.getElementById("firstButton");
+
+        const secondButton = document.getElementById("secondButton");
+
         const mainPage = document.getElementById("mainPage");
 
-        enterButton.addEventListener("click", () => {
+
+        /* Primera advertencia → segunda */
+
+        firstButton.addEventListener("click", () => {
+
+            warningBox.classList.add("changing");
+
+            setTimeout(() => {
+
+                warningBox.style.display = "none";
+
+                warningTwo.style.display = "block";
+
+                setTimeout(() => {
+                    warningTwo.classList.remove("changing");
+                }, 50);
+
+            }, 500);
+
+        });
+
+
+        /* Segunda advertencia → página */
+
+        secondButton.addEventListener("click", () => {
 
             warningScreen.classList.add("hidden");
 
             setTimeout(() => {
+
                 mainPage.classList.add("visible");
+
+                document.body.style.overflow = "auto";
+
             }, 300);
 
         });
