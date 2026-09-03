@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Para ti</title>
+    <title>Te ano</title>
 
     <!-- Tipografías -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -15,18 +15,25 @@
 
     <style>
 
+        /* =========================
+           CONFIGURACIÓN GENERAL
+        ========================= */
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
-            min-height: 100vh;
             background: #1B2021;
             color: #F5F5F5;
             font-family: "Inter", sans-serif;
-            overflow: hidden;
+            overflow-x: hidden;
         }
 
 
@@ -37,6 +44,7 @@
         .warning-screen {
             position: fixed;
             inset: 0;
+
             z-index: 100;
 
             display: flex;
@@ -47,12 +55,9 @@
 
             padding: 30px;
 
-            opacity: 1;
-            visibility: visible;
-
             transition:
-                opacity 0.7s ease,
-                visibility 0.7s ease;
+                opacity 0.8s ease,
+                visibility 0.8s ease;
         }
 
         .warning-screen.hidden {
@@ -61,25 +66,25 @@
             pointer-events: none;
         }
 
-        /* Tarjeta */
+
+        /* =========================
+           TARJETA DE ADVERTENCIA
+        ========================= */
 
         .warning-box {
             width: min(90%, 520px);
 
             background: #FFD9DA;
-
             color: #1B2021;
 
-            border-radius: 18px;
+            border-radius: 20px;
 
             padding: 50px 45px;
 
             text-align: center;
 
             box-shadow:
-                0 20px 60px rgba(0, 0, 0, 0.25);
-
-            transform: translateY(0);
+                0 25px 70px rgba(0, 0, 0, 0.30);
 
             transition:
                 opacity 0.5s ease,
@@ -88,7 +93,7 @@
 
         .warning-box.changing {
             opacity: 0;
-            transform: translateY(10px);
+            transform: translateY(12px);
         }
 
         .warning-icon {
@@ -100,7 +105,6 @@
             font-family: "DM Serif Display", serif;
 
             font-size: 2.3rem;
-
             font-weight: 400;
 
             line-height: 1.15;
@@ -109,31 +113,28 @@
         }
 
         .warning-text {
+            color: #1B2021;
+
             font-size: 1rem;
-
-            line-height: 1.7;
-
             font-weight: 400;
 
-            color: #1B2021;
+            line-height: 1.7;
         }
 
         .warning-button {
             margin-top: 32px;
 
-            padding: 13px 27px;
+            padding: 13px 28px;
 
-            border: 1px solid #1B2021;
-
-            border-radius: 30px;
+            border: none;
+            border-radius: 999px;
 
             background: #1B2021;
-
             color: #FFD9DA;
 
             font-family: "Inter", sans-serif;
-
             font-size: 0.95rem;
+            font-weight: 400;
 
             cursor: pointer;
 
@@ -144,7 +145,7 @@
 
         .warning-button:hover {
             transform: translateY(-2px);
-            opacity: 0.9;
+            opacity: 0.88;
         }
 
 
@@ -158,40 +159,41 @@
 
 
         /* =========================
-           PÁGINA PRINCIPAL
+           PRIMERA SECCIÓN
         ========================= */
 
-        .page {
+        .hero {
             min-height: 100vh;
 
             display: flex;
-
             align-items: center;
-
             justify-content: flex-end;
 
-            padding: 80px 10vw;
-
-            opacity: 0;
-
-            transform: translateY(15px);
-
-            transition:
-                opacity 1.2s ease,
-                transform 1.2s ease;
-        }
-
-        .page.visible {
-            opacity: 1;
-
-            transform: translateY(0);
+            padding: 90px 10vw;
         }
 
         .intro-container {
-            width: min(720px, 100%);
+            width: min(760px, 100%);
 
             text-align: right;
         }
+
+
+        /* =========================
+           LOGO
+        ========================= */
+
+        .logo {
+            width: 210px;
+            height: auto;
+
+            margin-bottom: 55px;
+        }
+
+
+        /* =========================
+           TÍTULO PRINCIPAL
+        ========================= */
 
         .title {
             font-family: "DM Serif Display", serif;
@@ -207,20 +209,155 @@
             color: #F5F5F5;
         }
 
-        .subtitle {
-            margin-top: 30px;
 
+        /* =========================
+           SUBTÍTULO
+        ========================= */
+
+        .subtitle {
+            max-width: 680px;
+
+            margin-top: 30px;
             margin-left: auto;
 
-            max-width: 650px;
+            color: #AEB3BD;
 
             font-size: clamp(1rem, 2vw, 1.25rem);
 
+            font-weight: 300;
+
             line-height: 1.75;
+        }
+
+
+        /* =========================
+           BOTÓN DE SENTIMIENTOS
+        ========================= */
+
+        .feelings-button {
+            margin-top: 40px;
+
+            padding: 15px 27px;
+
+            border: none;
+            border-radius: 999px;
+
+            background: #FFD9DA;
+            color: #1B2021;
+
+            font-family: "Inter", sans-serif;
+
+            font-size: 0.95rem;
+            font-weight: 400;
+
+            cursor: pointer;
+
+            transition:
+                transform 0.3s ease,
+                box-shadow 0.3s ease;
+        }
+
+        .feelings-button:hover {
+            transform: translateY(-3px);
+
+            box-shadow:
+                0 10px 30px rgba(0, 0, 0, 0.18);
+        }
+
+
+        /* =========================
+           SECCIÓN ¿QUÉ SIENTO?
+        ========================= */
+
+        .feelings-section {
+            min-height: 100vh;
+
+            background: #EA638C;
+
+            color: #1B2021;
+
+            display: flex;
+            align-items: center;
+
+            padding: 100px 10vw;
+        }
+
+        .feelings-container {
+            width: min(1000px, 100%);
+
+            margin: 0 auto;
+
+            text-align: left;
+        }
+
+
+        /* Pequeño encabezado */
+
+        .section-label {
+            font-family: "Inter", sans-serif;
+
+            font-size: 1rem;
+
+            font-weight: 500;
+
+            letter-spacing: 1px;
+
+            text-transform: uppercase;
+
+            margin-bottom: 35px;
+        }
+
+
+        /* Título de la sección */
+
+        .feelings-title {
+            max-width: 900px;
+
+            font-family: "DM Serif Display", serif;
+
+            font-size: clamp(2.3rem, 4.5vw, 4.5rem);
+
+            font-weight: 400;
+
+            line-height: 1.15;
+
+            letter-spacing: -0.8px;
+        }
+
+
+        /* Subtítulo */
+
+        .feelings-subtitle {
+            max-width: 760px;
+
+            margin-top: 32px;
+
+            font-size: clamp(1rem, 2vw, 1.3rem);
 
             font-weight: 300;
 
-            color: #AEB3BD;
+            line-height: 1.8;
+        }
+
+
+        /* =========================
+           ANIMACIÓN DE ENTRADA
+        ========================= */
+
+        .hero {
+            opacity: 0;
+
+            transform: translateY(15px);
+
+            transition:
+                opacity 1.2s ease,
+                transform 1.2s ease;
+        }
+
+        .hero.visible {
+            opacity: 1;
+
+            transform: translateY(0);
         }
 
 
@@ -233,7 +370,7 @@
             .warning-box {
                 padding: 40px 28px;
 
-                border-radius: 16px;
+                border-radius: 17px;
             }
 
             .warning-title {
@@ -244,38 +381,72 @@
                 font-size: 0.95rem;
             }
 
-            .page {
-                padding: 50px 30px;
+            .hero {
+                padding: 60px 30px;
+
+                align-items: center;
             }
 
             .intro-container {
                 text-align: right;
             }
 
+            .logo {
+                width: 170px;
+
+                margin-bottom: 40px;
+            }
+
             .title {
                 font-size: clamp(2.8rem, 12vw, 4rem);
+
+                letter-spacing: -1px;
             }
 
             .subtitle {
                 font-size: 1rem;
 
                 line-height: 1.65;
+
+                margin-top: 25px;
             }
+
+            .feelings-section {
+                padding: 80px 30px;
+            }
+
+            .section-label {
+                margin-bottom: 25px;
+            }
+
+            .feelings-title {
+                font-size: clamp(2.2rem, 10vw, 3.5rem);
+            }
+
+            .feelings-subtitle {
+                font-size: 1rem;
+
+                line-height: 1.7;
+            }
+
         }
 
     </style>
 </head>
 
+
 <body>
 
 
-    <!-- =========================
-         PRIMERA ADVERTENCIA
-    ========================= -->
+    <!-- ==================================
+         ADVERTENCIAS
+    ================================== -->
 
     <div class="warning-screen" id="warningScreen">
 
-        <div class="warning-box" id="warningBox">
+        <!-- Primera advertencia -->
+
+        <div class="warning-box" id="warningOne">
 
             <div class="warning-icon">
                 ⚠️
@@ -300,9 +471,7 @@
         </div>
 
 
-        <!-- =========================
-             SEGUNDA ADVERTENCIA
-        ========================= -->
+        <!-- Segunda advertencia -->
 
         <div class="warning-box" id="warningTwo">
 
@@ -329,13 +498,19 @@
     </div>
 
 
-    <!-- =========================
-         CONTENIDO PRINCIPAL
-    ========================= -->
+    <!-- ==================================
+         HERO / PORTADA
+    ================================== -->
 
-    <main class="page" id="mainPage">
+    <main class="hero" id="mainPage">
 
         <div class="intro-container">
+
+            <img
+                src="te-ano-logo.png"
+                alt="Te ano"
+                class="logo"
+            >
 
             <h1 class="title">
                 Y si acaso en el mundo tú no estuvieras,
@@ -347,52 +522,106 @@
                 porque eres mi único amor, mi única elección.
             </p>
 
+            <button
+                class="feelings-button"
+                id="feelingsButton"
+            >
+                Ver qué incluyen mis sentimientos&nbsp; →
+            </button>
+
         </div>
 
     </main>
 
 
-    <!-- =========================
+    <!-- ==================================
+         SECCIÓN ¿QUÉ SIENTO?
+    ================================== -->
+
+    <section class="feelings-section" id="feelings">
+
+        <div class="feelings-container">
+
+            <div class="section-label">
+                ¿Qué siento?
+            </div>
+
+            <h2 class="feelings-title">
+                Si enamorarse es de tontos, entonces yo seré el más tonto por ti, y si rogar es de cobardes, seré el más cobarde entre los hombres.
+            </h2>
+
+            <p class="feelings-subtitle">
+                Mi niña, no hay paredes ni jardines secretos para ti, tienes las llaves de todas mis puertas.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- ==================================
          JAVASCRIPT
-    ========================= -->
+    ================================== -->
 
     <script>
 
-        const warningScreen = document.getElementById("warningScreen");
+        const warningScreen =
+            document.getElementById("warningScreen");
 
-        const warningBox = document.getElementById("warningBox");
+        const warningOne =
+            document.getElementById("warningOne");
 
-        const warningTwo = document.getElementById("warningTwo");
+        const warningTwo =
+            document.getElementById("warningTwo");
 
-        const firstButton = document.getElementById("firstButton");
+        const firstButton =
+            document.getElementById("firstButton");
 
-        const secondButton = document.getElementById("secondButton");
+        const secondButton =
+            document.getElementById("secondButton");
 
-        const mainPage = document.getElementById("mainPage");
+        const mainPage =
+            document.getElementById("mainPage");
+
+        const feelingsButton =
+            document.getElementById("feelingsButton");
 
 
-        /* Primera advertencia → segunda */
+        /* =========================
+           PRIMERA ADVERTENCIA
+        ========================= */
 
         firstButton.addEventListener("click", () => {
 
-            warningBox.classList.add("changing");
+            warningOne.classList.add("changing");
 
             setTimeout(() => {
 
-                warningBox.style.display = "none";
+                warningOne.style.display = "none";
 
                 warningTwo.style.display = "block";
 
-                setTimeout(() => {
-                    warningTwo.classList.remove("changing");
-                }, 50);
+                warningTwo.style.opacity = "0";
+                warningTwo.style.transform = "translateY(12px)";
+
+                requestAnimationFrame(() => {
+
+                    warningTwo.style.transition =
+                        "opacity 0.5s ease, transform 0.5s ease";
+
+                    warningTwo.style.opacity = "1";
+                    warningTwo.style.transform = "translateY(0)";
+
+                });
 
             }, 500);
 
         });
 
 
-        /* Segunda advertencia → página */
+        /* =========================
+           SEGUNDA ADVERTENCIA
+        ========================= */
 
         secondButton.addEventListener("click", () => {
 
@@ -405,6 +634,19 @@
                 document.body.style.overflow = "auto";
 
             }, 300);
+
+        });
+
+
+        /* =========================
+           BOTÓN ¿QUÉ SIENTO?
+        ========================= */
+
+        feelingsButton.addEventListener("click", () => {
+
+            document.getElementById("feelings").scrollIntoView({
+                behavior: "smooth"
+            });
 
         });
 
