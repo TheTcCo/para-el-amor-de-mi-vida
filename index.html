@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -11,7 +10,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=DM+Serif+Display&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
     <style>
 
@@ -163,13 +162,16 @@
         ========================= */
 
         .hero {
-            min-height: 100vh;
+            position: relative;
+
+            min-height: auto;
 
             display: flex;
-            align-items: center;
-            justify-content: flex-end;
+            flex-direction: column;
+            align-items: flex-end;
+            justify-content: flex-start;
 
-            padding: 90px 10vw;
+            padding: 124px 10vw 44px;
         }
 
         .intro-container {
@@ -184,10 +186,14 @@
         ========================= */
 
         .logo {
-            width: 210px;
+            position: absolute;
+            top: 48px;
+            left: 10vw;
+
+            width: 180px;
             height: auto;
 
-            margin-bottom: 55px;
+            margin: 0;
         }
 
 
@@ -270,16 +276,21 @@
         ========================= */
 
         .feelings-section {
-            min-height: 100vh;
+            position: relative;
+            z-index: 4;
 
-            background: #EA638C;
+            margin-top: -26px;
+
+            min-height: auto;
+
+            background: #FFD9DA;
 
             color: #1B2021;
 
             display: flex;
-            align-items: center;
+            align-items: flex-start;
 
-            padding: 100px 10vw;
+            padding: 44px 10vw 52px;
         }
 
         .feelings-container {
@@ -303,6 +314,8 @@
             letter-spacing: 1px;
 
             text-transform: uppercase;
+
+            color: #EA638C;
 
             margin-bottom: 35px;
         }
@@ -337,6 +350,632 @@
             font-weight: 300;
 
             line-height: 1.8;
+        }
+
+
+        /* =========================
+           SECCIÓN "PARA MARTINA" (ROSA)
+        ========================= */
+
+        .rose-section {
+            position: relative;
+
+            min-height: 52vh;
+
+            background: #EA638C;
+
+            overflow: hidden;
+
+            padding: 0;
+        }
+
+        /* Gradiente: conecta el negro del hero con el rosa (largo y gradual, sin sumar altura) */
+        .rose-section::before {
+            content: "";
+
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+
+            height: 230px;
+
+            background: linear-gradient(
+                to bottom,
+                #1B2021 0%,
+                rgba(70, 45, 62, 0.72) 38%,
+                rgba(234, 99, 140, 0.28) 72%,
+                rgba(234, 99, 140, 0) 100%
+            );
+
+            pointer-events: none;
+            z-index: 3;
+        }
+
+        .rose-img {
+            position: absolute;
+            z-index: 4;
+
+            left: -24%;
+            bottom: -12%;
+
+            width: 82%;
+            max-width: 640px;
+            height: auto;
+
+            pointer-events: none;
+            user-select: none;
+        }
+
+        .rose-title,
+        .rose-subtitle {
+            position: absolute;
+            z-index: 6;
+
+            right: 4%;
+
+            width: min(44%, 210px);
+
+            text-align: left;
+
+            font-family: "Caveat", cursive;
+
+            color: #FFD9DA;
+        }
+
+        .rose-title {
+            top: 8%;
+
+            font-size: clamp(2.4rem, 10.5vw, 3.4rem);
+            font-weight: 600;
+
+            line-height: 1.02;
+            letter-spacing: 0.5px;
+        }
+
+        .rose-subtitle {
+            bottom: 13%;
+
+            font-size: clamp(1.6rem, 6.8vw, 2.2rem);
+            font-weight: 500;
+
+            line-height: 1.12;
+
+            opacity: 0.92;
+        }
+
+
+        /* =========================
+           SECCIÓN "¿QUÉ INCLUYE MI AMOR?"
+        ========================= */
+
+        .includes-section {
+            background: #EA638C;
+
+            padding: 70px 0 84px;
+
+            overflow: hidden;
+        }
+
+        .includes-title {
+            margin: 0 auto 16px;
+            padding: 0 24px;
+
+            max-width: 900px;
+
+            font-family: "DM Serif Display", serif;
+
+            font-size: clamp(2rem, 7vw, 3.2rem);
+            font-weight: 400;
+
+            line-height: 1.15;
+            letter-spacing: -0.5px;
+
+            text-align: center;
+
+            color: #FFD9DA;
+        }
+
+        .includes-subtitle {
+            margin: 0 auto 40px;
+            padding: 0 24px;
+
+            max-width: 640px;
+
+            font-family: "Inter", sans-serif;
+
+            font-size: clamp(1rem, 3.4vw, 1.2rem);
+            font-weight: 300;
+
+            line-height: 1.6;
+
+            text-align: center;
+
+            color: #FFD9DA;
+            opacity: 0.85;
+        }
+
+        /* Carrusel horizontal */
+
+        .carousel {
+            display: flex;
+
+            gap: 18px;
+
+            padding: 6px 22px 24px;
+
+            overflow-x: auto;
+            overflow-y: hidden;
+
+            scroll-snap-type: x mandatory;
+            scroll-padding-left: 22px;
+
+            -webkit-overflow-scrolling: touch;
+
+            scrollbar-width: none;
+        }
+
+        .carousel::-webkit-scrollbar {
+            display: none;
+        }
+
+        .card {
+            flex: 0 0 74%;
+
+            min-height: 38vh;
+
+            background: #89023E;
+
+            border-radius: 24px;
+
+            scroll-snap-align: start;
+
+            box-shadow:
+                inset 0 0 0 1px rgba(255, 255, 255, 0.06),
+                0 22px 44px -18px rgba(43, 0, 20, 0.65);
+
+            display: flex;
+            flex-direction: column;
+
+            padding: 34px 28px;
+        }
+
+        .card-title {
+            font-family: "DM Serif Display", serif;
+
+            font-size: 1.9rem;
+            font-weight: 400;
+
+            line-height: 1.1;
+            letter-spacing: -0.3px;
+
+            color: #FFD9DA;
+        }
+
+        .card-desc {
+            margin-top: 16px;
+
+            font-family: "Inter", sans-serif;
+
+            font-size: 1.02rem;
+            font-weight: 300;
+
+            line-height: 1.68;
+
+            color: #FFD9DA;
+
+            opacity: 0.88;
+        }
+
+        /* Nota / advertencia bajo el carrusel */
+
+        .includes-note {
+            margin: 44px auto 0;
+            padding: 26px 24px 0;
+
+            max-width: 620px;
+
+            border-top: 1px solid rgba(255, 217, 218, 0.28);
+
+            font-family: "Inter", sans-serif;
+
+            font-size: 0.9rem;
+            font-weight: 300;
+            font-style: italic;
+
+            line-height: 1.72;
+
+            text-align: center;
+
+            color: #FFD9DA;
+            opacity: 0.82;
+        }
+
+
+        /* =========================
+           SECCIÓN "¿POR QUÉ TÚ?"
+        ========================= */
+
+        .why-section {
+            background: #EA638C;
+
+            padding: 0 0 96px;
+        }
+
+        /* Hero visual de la sección */
+
+        .why-hero {
+            position: relative;
+            isolation: isolate;
+
+            min-height: 86vh;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+
+            overflow: hidden;
+        }
+
+        .why-hero-img {
+            position: absolute;
+            inset: 0;
+            z-index: -2;
+
+            width: 100%;
+            height: 100%;
+
+            object-fit: cover;
+            object-position: center 28%;
+
+            user-select: none;
+            pointer-events: none;
+        }
+
+        /* Difuminado: la imagen se desvanece hacia el fondo rosa */
+
+        .why-hero-fade {
+            position: absolute;
+            inset: 0;
+            z-index: -1;
+
+            background:
+                linear-gradient(
+                    to bottom,
+                    rgba(27, 32, 33, 0.45) 0%,
+                    rgba(27, 32, 33, 0.10) 22%,
+                    rgba(234, 99, 140, 0) 40%,
+                    rgba(234, 99, 140, 0.35) 60%,
+                    rgba(234, 99, 140, 0.82) 80%,
+                    #EA638C 100%
+                );
+        }
+
+        .why-hero-content {
+            position: relative;
+
+            padding: 0 26px 24vh;
+
+            text-align: center;
+        }
+
+        .why-title {
+            margin: 0 auto;
+
+            max-width: 900px;
+
+            font-family: "DM Serif Display", serif;
+
+            font-size: clamp(2rem, 7vw, 3.2rem);
+            font-weight: 400;
+
+            line-height: 1.15;
+            letter-spacing: -0.5px;
+
+            text-align: center;
+
+            color: #FFFFFF;
+
+            text-shadow:
+                0 2px 22px rgba(18, 20, 24, 0.8),
+                0 1px 4px rgba(18, 20, 24, 0.6);
+        }
+
+        .why-title .accent {
+            color: #FFD9DA;
+        }
+
+        .why-subtitle {
+            margin: 16px auto 0;
+
+            max-width: 460px;
+
+            font-family: "DM Serif Display", serif;
+            font-style: italic;
+
+            font-size: clamp(1.05rem, 4.4vw, 1.45rem);
+            font-weight: 400;
+
+            line-height: 1.5;
+
+            color: #FFD9DA;
+        }
+
+        /* Texto principal sobre el fondo rosa */
+
+        .why-text {
+            max-width: 600px;
+
+            margin: 0 auto;
+            padding: 8px 30px 0;
+
+            color: #FFD9DA;
+        }
+
+        .why-text p {
+            font-family: "Inter", sans-serif;
+
+            font-size: clamp(1rem, 3.7vw, 1.16rem);
+            font-weight: 600;
+
+            line-height: 1.8;
+        }
+
+        .why-closing {
+            margin-top: 38px;
+
+            font-style: italic;
+        }
+
+
+        /* =========================
+           SECCIÓN "CANCIONES"
+        ========================= */
+
+        .songs-section {
+            background: #1B2021;
+
+            padding: 74px 0 88px;
+        }
+
+        .songs-title {
+            margin: 0 auto 14px;
+            padding: 0 26px;
+
+            max-width: 900px;
+
+            font-family: "DM Serif Display", serif;
+
+            font-size: clamp(1.9rem, 6.4vw, 3rem);
+            font-weight: 400;
+
+            line-height: 1.2;
+            letter-spacing: -0.5px;
+
+            text-align: center;
+
+            color: #F5F5F5;
+        }
+
+        .songs-subtitle {
+            margin: 0 auto 36px;
+            padding: 0 26px;
+
+            max-width: 560px;
+
+            font-family: "DM Serif Display", serif;
+            font-style: italic;
+
+            font-size: clamp(1rem, 4vw, 1.3rem);
+            font-weight: 400;
+
+            line-height: 1.5;
+
+            text-align: center;
+
+            color: #FFD9DA;
+            opacity: 0.9;
+        }
+
+        .song-card {
+            flex: 0 0 90%;
+
+            aspect-ratio: 16 / 10;
+            min-height: 14.5rem;
+
+            background: #89023E;
+
+            border-radius: 22px;
+
+            scroll-snap-align: start;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+
+            gap: 7px;
+
+            padding: 22px 22px;
+
+            text-align: center;
+
+            box-shadow:
+                inset 0 0 0 1px rgba(255, 217, 218, 0.16),
+                0 22px 46px -18px rgba(0, 0, 0, 0.55);
+        }
+
+        .song-title {
+            font-family: "DM Serif Display", serif;
+
+            font-size: clamp(1.2rem, 5vw, 1.5rem);
+            font-weight: 400;
+
+            line-height: 1.12;
+
+            color: #FFD9DA;
+        }
+
+        .song-artist {
+            font-family: "Inter", sans-serif;
+
+            font-size: 0.72rem;
+            font-weight: 600;
+
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+
+            color: #EA638C;
+        }
+
+        .song-fragment {
+            margin: 6px 0 2px;
+
+            max-width: 34ch;
+
+            font-family: "DM Serif Display", serif;
+            font-style: italic;
+
+            font-size: clamp(1.05rem, 4.6vw, 1.3rem);
+
+            line-height: 1.5;
+
+            color: #FFD9DA;
+        }
+
+        /* Card con dos fragmentos: slider interno (misma altura que el resto) */
+
+        .song-frag-slider {
+            position: relative;
+
+            width: 100%;
+            max-width: 34ch;
+
+            min-height: 5em;
+
+            margin: 6px auto 2px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .song-frag-slider .song-fragment {
+            position: absolute;
+            left: 0;
+            right: 0;
+
+            width: 100%;
+            margin-inline: auto;
+
+            text-align: center;
+
+            opacity: 0;
+
+            transition: opacity 0.55s ease;
+        }
+
+        .song-frag-slider .song-fragment.is-active {
+            opacity: 1;
+        }
+
+        .song-dots {
+            display: flex;
+            justify-content: center;
+
+            gap: 7px;
+
+            margin-top: 2px;
+        }
+
+        .song-dot {
+            width: 6px;
+            height: 6px;
+
+            border-radius: 999px;
+
+            background: #EA638C;
+            opacity: 0.45;
+
+            transition:
+                opacity 0.4s ease,
+                transform 0.4s ease,
+                background-color 0.4s ease;
+        }
+
+        .song-dot.is-active {
+            opacity: 1;
+
+            background: #FFD9DA;
+            transform: scale(1.15);
+        }
+
+        .song-controls {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            gap: 22px;
+
+            margin-top: 8px;
+        }
+
+        .song-nav {
+            border: none;
+            background: none;
+
+            padding: 6px;
+
+            font-family: "Inter", sans-serif;
+            font-size: 1.5rem;
+            line-height: 1;
+
+            color: #EA638C;
+
+            cursor: pointer;
+
+            transition:
+                color 0.2s ease,
+                transform 0.2s ease;
+        }
+
+        .song-nav:hover {
+            color: #FFD9DA;
+            transform: translateY(-1px);
+        }
+
+        .song-play {
+            width: 46px;
+            height: 46px;
+
+            display: grid;
+            place-items: center;
+
+            border: none;
+            border-radius: 999px;
+
+            background: #FFD9DA;
+
+            cursor: pointer;
+
+            transition: transform 0.2s ease;
+        }
+
+        .song-play::before {
+            content: "";
+
+            width: 0;
+            height: 0;
+
+            border-style: solid;
+            border-width: 8px 0 8px 13px;
+            border-color: transparent transparent transparent #89023E;
+
+            margin-left: 3px;
+        }
+
+        .song-play:hover {
+            transform: scale(1.06);
         }
 
 
@@ -382,9 +1021,9 @@
             }
 
             .hero {
-                padding: 60px 30px;
+                padding: 116px 26px 40px;
 
-                align-items: center;
+                align-items: flex-end;
             }
 
             .intro-container {
@@ -392,9 +1031,10 @@
             }
 
             .logo {
-                width: 170px;
+                top: 26px;
+                left: 26px;
 
-                margin-bottom: 40px;
+                width: 128px;
             }
 
             .title {
@@ -411,8 +1051,96 @@
                 margin-top: 25px;
             }
 
+            .rose-section {
+                min-height: 48vh;
+                padding: 0;
+            }
+
+            .rose-img {
+                left: -36%;
+                bottom: -12%;
+                width: 104%;
+            }
+
+            .rose-title {
+                right: 3%;
+                top: 6%;
+                width: min(46%, 178px);
+            }
+
+            .rose-subtitle {
+                right: 3%;
+                bottom: 12%;
+                width: min(46%, 178px);
+            }
+
             .feelings-section {
-                padding: 80px 30px;
+                padding: 34px 30px 44px;
+            }
+
+            .includes-section {
+                padding: 52px 0 68px;
+            }
+
+            .includes-title {
+                margin-bottom: 12px;
+            }
+
+            .includes-subtitle {
+                margin-bottom: 32px;
+                font-size: 1rem;
+            }
+
+            .includes-note {
+                margin-top: 34px;
+                padding: 22px 26px 0;
+                font-size: 0.86rem;
+            }
+
+            .why-section {
+                padding: 0 0 76px;
+            }
+
+            .why-hero {
+                min-height: 80vh;
+            }
+
+            .why-hero-content {
+                padding: 0 24px 22vh;
+            }
+
+            .why-text {
+                padding: 8px 28px 0;
+            }
+
+            .songs-section {
+                padding: 56px 0 72px;
+            }
+
+            .songs-title {
+                margin-bottom: 12px;
+            }
+
+            .songs-subtitle {
+                margin-bottom: 30px;
+            }
+
+            .song-card {
+                flex-basis: 92%;
+                border-radius: 20px;
+                padding: 20px 18px;
+            }
+
+            .carousel {
+                gap: 16px;
+                padding: 6px 20px 22px;
+                scroll-padding-left: 20px;
+            }
+
+            .card {
+                flex-basis: 76%;
+                border-radius: 22px;
+                padding: 30px 24px;
             }
 
             .section-label {
@@ -486,7 +1214,7 @@
             <p class="warning-text">
                 Te lo advertí.
                 <br>
-                Hay demasiada ternura aquí dentro.
+                Hay demasiadas cosas cursi aquí dentro.
             </p>
 
             <button class="warning-button" id="secondButton">
@@ -526,12 +1254,35 @@
                 class="feelings-button"
                 id="feelingsButton"
             >
-                Ver qué incluyen mis sentimientos&nbsp; →
+                Ver qué incluye mi amor
             </button>
 
         </div>
 
     </main>
+
+
+    <!-- ==================================
+         SECCIÓN "PARA MARTINA"
+    ================================== -->
+
+    <section class="rose-section" id="rose">
+
+        <img
+            src="rosas_head.png"
+            alt=""
+            class="rose-img"
+        >
+
+        <h2 class="rose-title">
+            Para Martina
+        </h2>
+
+        <p class="rose-subtitle">
+            Eres todo para mí
+        </p>
+
+    </section>
 
 
     <!-- ==================================
@@ -553,6 +1304,220 @@
             <p class="feelings-subtitle">
                 Mi niña, no hay paredes ni jardines secretos para ti, tienes las llaves de todas mis puertas.
             </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- ==================================
+         SECCIÓN "¿QUÉ INCLUYE MI AMOR?"
+    ================================== -->
+
+    <section class="includes-section" id="includes">
+
+        <h2 class="includes-title">
+            ¿Qué incluye mi amor?
+        </h2>
+
+        <p class="includes-subtitle">
+            Te ofrezco amor real y un corazón sincero.
+        </p>
+
+        <div class="carousel">
+
+            <div class="card">
+                <h3 class="card-title">Mi corazón</h3>
+                <p class="card-desc">
+                    Un corazón dispuesto a amarte hasta el final, a darlo todo con tal de verte con esa sonrisa preciosa que tienes. Un amor dispuesto a entregarse por completo, incluso en los días difíciles.
+                </p>
+            </div>
+
+            <div class="card">
+                <h3 class="card-title">Mi ser</h3>
+                <p class="card-desc">
+                    Seré todo tuyo, no como una posesión, sino como alma y compañía. Tendrás mi existencia, mi voluntad y todo lo que soy para caminar contigo, amarte y cuidarte. Todo lo que soy y tengo, quiero compartirlo contigo.
+                </p>
+            </div>
+
+            <div class="card">
+                <h3 class="card-title">Mi lealtad</h3>
+                <p class="card-desc">
+                    Para que nunca tengas que dudar de mí. Un amor que no te mentirá ni te ocultará nada, que elegirá siempre la sinceridad y permanecerá a tu lado sin engaños ni decepciones.
+                </p>
+            </div>
+
+            <div class="card">
+                <h3 class="card-title">Mi confianza</h3>
+                <p class="card-desc">
+                    Para que nunca pienses que te juzgaré o que no estaré para apoyarte. Para que sepas que no tienes que caer sola y que siempre podrás encontrar en mí un lugar seguro donde ser tú misma.
+                </p>
+            </div>
+
+        </div>
+
+        <p class="includes-note">
+            Importante: Este amor no incluye mentiras, ni deslealtad, ni engaños.
+        </p>
+
+    </section>
+
+
+    <!-- ==================================
+         SECCIÓN "¿POR QUÉ TÚ?"
+    ================================== -->
+
+    <section class="why-section" id="why">
+
+        <div class="why-hero">
+
+            <img
+                src="us.jpeg"
+                alt=""
+                class="why-hero-img"
+            >
+
+            <div class="why-hero-fade"></div>
+
+            <div class="why-hero-content">
+
+                <h2 class="why-title">
+                    ¿Por qué <span class="accent">tú</span>?
+                </h2>
+
+                <p class="why-subtitle">
+                    Sí, la vida es miserable, la vida es maravillosa, y la amo a través de ti.
+                </p>
+
+            </div>
+
+        </div>
+
+        <div class="why-text">
+
+            <p>
+                Llegaste, por casualidad, a mi vida de la que estaba harto, y desde ese día, algo empezó a cambiar. Todo lo que no eras tú ni estaba contigo me parecía pobre y carente de sentido, como si me impidieran ser feliz, pero contigo, respiro mejor, odio menos a las cosas. Cuando estoy contigo, el mundo cambia, se vuelve un lugar soportable, y sobre todo, cómodo.
+            </p>
+
+            <p class="why-closing">
+                Me gustas, te amo, y te quiero entre mis brazos para siempre.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- ==================================
+         SECCIÓN "CANCIONES"
+    ================================== -->
+
+    <section class="songs-section" id="songs">
+
+        <h2 class="songs-title">
+            Canciones que siempre me llevan a ti.
+        </h2>
+
+        <p class="songs-subtitle">
+            Lucharé por tenerte hasta la muerte.
+        </p>
+
+        <div class="carousel carousel--songs">
+
+            <div class="song-card">
+                <h3 class="song-title">Te Amo, Para Siempre</h3>
+                <p class="song-artist">Noche de Brujas</p>
+                <p class="song-fragment">Y que muero por besarte, y decirte. Que me gustas, que te amo.</p>
+                <div class="song-controls">
+                    <button type="button" class="song-nav song-nav--prev" aria-label="Canción anterior">←</button>
+                    <button type="button" class="song-play" aria-label="Reproducir"></button>
+                    <button type="button" class="song-nav song-nav--next" aria-label="Canción siguiente">→</button>
+                </div>
+            </div>
+
+            <div class="song-card">
+                <h3 class="song-title">Un Amor Violento</h3>
+                <p class="song-artist">Los Tres</p>
+                <p class="song-fragment">Nunca más podré dormir. Nunca más podré soñar. Con nadie que no seas tú</p>
+                <div class="song-controls">
+                    <button type="button" class="song-nav song-nav--prev" aria-label="Canción anterior">←</button>
+                    <button type="button" class="song-play" aria-label="Reproducir"></button>
+                    <button type="button" class="song-nav song-nav--next" aria-label="Canción siguiente">→</button>
+                </div>
+            </div>
+
+            <div class="song-card">
+                <h3 class="song-title">La Verdad</h3>
+                <p class="song-artist">Kid Voodoo</p>
+                <p class="song-fragment">Miento si te digo que vi a otra mejor, no hay otra mejor.</p>
+                <div class="song-controls">
+                    <button type="button" class="song-nav song-nav--prev" aria-label="Canción anterior">←</button>
+                    <button type="button" class="song-play" aria-label="Reproducir"></button>
+                    <button type="button" class="song-nav song-nav--next" aria-label="Canción siguiente">→</button>
+                </div>
+            </div>
+
+            <div class="song-card">
+                <h3 class="song-title">Enamorados</h3>
+                <p class="song-artist">Manzanar de Chiloé</p>
+                <p class="song-fragment">Y si acaso en el mundo tu no estuvieras. Buscaría la forma de que existieras.</p>
+                <div class="song-controls">
+                    <button type="button" class="song-nav song-nav--prev" aria-label="Canción anterior">←</button>
+                    <button type="button" class="song-play" aria-label="Reproducir"></button>
+                    <button type="button" class="song-nav song-nav--next" aria-label="Canción siguiente">→</button>
+                </div>
+            </div>
+
+            <div class="song-card">
+                <h3 class="song-title">Allá Voy</h3>
+                <p class="song-artist">Soy Luna</p>
+                <p class="song-fragment">En el atardecer, te diré que eres mi único amor, mi única elección.</p>
+                <div class="song-controls">
+                    <button type="button" class="song-nav song-nav--prev" aria-label="Canción anterior">←</button>
+                    <button type="button" class="song-play" aria-label="Reproducir"></button>
+                    <button type="button" class="song-nav song-nav--next" aria-label="Canción siguiente">→</button>
+                </div>
+            </div>
+
+            <div class="song-card">
+                <h3 class="song-title">M.A.I</h3>
+                <p class="song-artist">Milo J</p>
+                <p class="song-fragment">Y aunque el orgullo a veces ocultó mis miedo'. Temo a caer y que no estés conmigo</p>
+                <div class="song-controls">
+                    <button type="button" class="song-nav song-nav--prev" aria-label="Canción anterior">←</button>
+                    <button type="button" class="song-play" aria-label="Reproducir"></button>
+                    <button type="button" class="song-nav song-nav--next" aria-label="Canción siguiente">→</button>
+                </div>
+            </div>
+
+            <div class="song-card">
+                <h3 class="song-title">Ladrón de Amor</h3>
+                <p class="song-artist">Medialuna de Amores</p>
+                <p class="song-fragment">Si yo fuera ladrón, robaría tus besos. Pagaría cualquier precio, por ser tu dueño.</p>
+                <div class="song-controls">
+                    <button type="button" class="song-nav song-nav--prev" aria-label="Canción anterior">←</button>
+                    <button type="button" class="song-play" aria-label="Reproducir"></button>
+                    <button type="button" class="song-nav song-nav--next" aria-label="Canción siguiente">→</button>
+                </div>
+            </div>
+
+            <div class="song-card song-card--multi">
+                <h3 class="song-title">Llorando Ausencia</h3>
+                <p class="song-artist">Maihuen de Los Angeles</p>
+                <div class="song-frag-slider">
+                    <p class="song-fragment is-active">La niña que sueño, es como una estrella. Que miro y adoro por ser la más bella.</p>
+                    <p class="song-fragment">Ay, cariño, si supieras te extraño tanto. ¿Cómo olvidar tus ojos que me cautivan?</p>
+                </div>
+                <div class="song-dots">
+                    <span class="song-dot is-active"></span>
+                    <span class="song-dot"></span>
+                </div>
+                <div class="song-controls">
+                    <button type="button" class="song-nav song-nav--prev" aria-label="Canción anterior">←</button>
+                    <button type="button" class="song-play" aria-label="Reproducir"></button>
+                    <button type="button" class="song-nav song-nav--next" aria-label="Canción siguiente">→</button>
+                </div>
+            </div>
 
         </div>
 
@@ -639,14 +1604,118 @@
 
 
         /* =========================
-           BOTÓN ¿QUÉ SIENTO?
+           BOTÓN "VER QUÉ INCLUYE MI AMOR"
         ========================= */
 
         feelingsButton.addEventListener("click", () => {
 
-            document.getElementById("feelings").scrollIntoView({
+            document.getElementById("includes").scrollIntoView({
                 behavior: "smooth"
             });
+
+        });
+
+
+        /* =========================
+           CARRUSEL INFINITO
+        ========================= */
+
+        document.querySelectorAll(".carousel").forEach((track) => {
+
+            const originals = Array.from(track.children);
+            const count = originals.length;
+
+            if (!count) return;
+
+            // Triplicamos las cards para simular continuidad en ambos sentidos
+            originals.forEach((n) => track.appendChild(n.cloneNode(true)));
+            originals.forEach((n) => track.appendChild(n.cloneNode(true)));
+
+            let setWidth = 0;
+
+            function measure() {
+
+                setWidth =
+                    track.children[count].offsetLeft -
+                    track.children[0].offsetLeft;
+
+                track.scrollLeft = setWidth;
+            }
+
+            requestAnimationFrame(measure);
+            window.addEventListener("load", measure);
+            window.addEventListener("resize", measure);
+
+            let ticking = false;
+
+            track.addEventListener("scroll", () => {
+
+                if (ticking || !setWidth) return;
+
+                ticking = true;
+
+                requestAnimationFrame(() => {
+
+                    const x = track.scrollLeft;
+
+                    if (x < setWidth * 0.5) {
+                        track.scrollLeft = x + setWidth;
+                    } else if (x > setWidth * 1.5) {
+                        track.scrollLeft = x - setWidth;
+                    }
+
+                    ticking = false;
+                });
+            });
+
+            // Flechas ← / → para navegar entre cards
+            track.addEventListener("click", (e) => {
+
+                const prev = e.target.closest(".song-nav--prev");
+                const next = e.target.closest(".song-nav--next");
+
+                if (!prev && !next) return;
+
+                const step =
+                    track.children[1].offsetLeft -
+                    track.children[0].offsetLeft;
+
+                track.scrollBy({
+                    left: next ? step : -step,
+                    behavior: "smooth"
+                });
+            });
+
+        });
+
+
+        /* =========================
+           SLIDER INTERNO DE FRAGMENTOS
+           (solo "Llorando Ausencia")
+        ========================= */
+
+        document.querySelectorAll(".song-card--multi").forEach((card) => {
+
+            const frags = card.querySelectorAll(".song-frag-slider .song-fragment");
+            const dots = card.querySelectorAll(".song-dot");
+
+            if (frags.length < 2) return;
+
+            let i = 0;
+
+            setInterval(() => {
+
+                i = (i + 1) % frags.length;
+
+                frags.forEach((f, n) =>
+                    f.classList.toggle("is-active", n === i)
+                );
+
+                dots.forEach((d, n) =>
+                    d.classList.toggle("is-active", n === i)
+                );
+
+            }, 4000);
 
         });
 
@@ -654,4 +1723,3 @@
 
 </body>
 </html>
-```
